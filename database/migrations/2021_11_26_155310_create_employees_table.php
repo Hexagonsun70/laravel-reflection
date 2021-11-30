@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
 class CreateEmployeesTable extends Migration
 {
@@ -14,11 +15,11 @@ class CreateEmployeesTable extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->foreignId('company_id');
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('company');
-            $table->string('email');
-            $table->integer('phone_number');
+            $table->string('email')->unique();
+            $table->string('phone_number')->unique();
             $table->timestamps();
         });
     }

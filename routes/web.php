@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\SignInController;
+use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +17,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+Route::get('sign-in', [SignInController::class, 'show']);
+
+Route::get('login', [SessionsController::class, 'create']);
+Route::post('sessions', [SessionsController::class, 'store'])->middleware('auth');
+
+//Route::get('admin/employee/create', [EmployeeController::class, 'create']);
+
