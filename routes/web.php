@@ -20,10 +20,11 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('sign-in', [SignInController::class, 'show']);
+
 
 Route::get('login', [SessionsController::class, 'create']);
-Route::post('sessions', [SessionsController::class, 'store'])->middleware('auth');
+Route::post('admin-panel', [SessionsController::class, 'store']);
+
 
 //Route::get('admin/employee/create', [EmployeeController::class, 'create']);
 

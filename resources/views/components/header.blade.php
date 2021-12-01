@@ -2,9 +2,19 @@
     <h1 class="text-4xl">
         SEO ADMIN PANEL
     </h1>
-    <a href="/login">
-        <h2 class="text-2xl mr-6">
-            Log In
-        </h2>
-    </a>
+
+    @auth
+        <button>Log Out</button>
+        <a href="/">
+            <h2 class="text-2xl mr-6">
+                Welcome {{ auth()->user()->name }}!
+            </h2>
+        </a>
+    @else
+        <a href="/login">
+            <h2 class="text-2xl mr-6">
+                Log In
+            </h2>
+        </a>
+    @endauth
 </header>

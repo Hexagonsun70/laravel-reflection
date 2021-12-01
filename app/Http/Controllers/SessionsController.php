@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Auth;
 
 class SessionsController extends Controller
 {
     public function create()
     {
-        return view('sessions.create');
+        return view('home');
     }
 
     public function store()
@@ -20,15 +23,13 @@ class SessionsController extends Controller
         ]);
 
         //attempt to log in the user based on the provided credentials
-        if (auth()->attempt($attributes)) {
-            // redirect with a success flash message
-            return redirect('/')->with('success', 'Welcome Back!');
+        if (Auth::attempt($attributes)) {
+            return redirect('/admin-panel')->with('success', 'Welcome Back!');
         }
 
         // auth failed, flash error message
         throw ValidationException::withMessages([
-           'email' => 'Your provided credentials are invalid. Please try again',
-            'password' => 'Your provided credentials are invalid. Please try again'
+           'email' => 'Your provided credentials are invalid. Please try again'
         ]);
 //        return back()
 //            ->withInput()

@@ -1,8 +1,11 @@
 <div class="bg-gray-600 mx-auto flex flex-col justify-center align-center px-9 h-auto w-80 rounded-xl shadow-2xl">
-    <h1 class="text-green-500 text-4xl text-center pt-6">Admin Login</h1>
-    <div class="py-6 font-bold text-green-500">
-        <form method="POST" action="/sessions" class="flex flex-col">
 
+    <h1 class="text-green-500 text-4xl text-center pt-6">Admin Login</h1>
+
+    <div class="py-6 font-bold text-green-500">
+
+        <form method="POST" action="/admin-panel" class="flex flex-col">
+            @csrf
             <label for="email"
                    class="pb-2"
             >
@@ -12,6 +15,8 @@
 
             <input type="email"
                    name="email"
+                   id="email"
+                   value=" {{ old('email') }}"
                    class="pl-2 bg-gray-400 text-white"
                    required
             >
@@ -25,6 +30,7 @@
 
             <input type="password"
                    name="password"
+                   id="password"
                    class="pl-2 bg-gray-400 text-white"
                    required
             >
