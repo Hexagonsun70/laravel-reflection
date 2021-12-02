@@ -24,9 +24,10 @@ class SessionsController extends Controller
 
         //attempt to log in the user based on the provided credentials
         if (Auth::attempt($attributes)) {
+            ddd($attributes);
             return redirect('/admin-panel')->with('success', 'Welcome Back!');
         }
-
+        ddd(Auth::attempt($attributes), $attributes);
         // auth failed, flash error message
         throw ValidationException::withMessages([
            'email' => 'Your provided credentials are invalid. Please try again'

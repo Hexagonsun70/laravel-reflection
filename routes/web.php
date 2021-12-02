@@ -20,11 +20,12 @@ Route::get('/', function () {
     return view('home');
 });
 
-
-
 Route::get('login', [SessionsController::class, 'create']);
 Route::post('admin-panel', [SessionsController::class, 'store']);
 
 
 //Route::get('admin/employee/create', [EmployeeController::class, 'create']);
 
+Auth::routes(['register' => false]);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
