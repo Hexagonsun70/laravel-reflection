@@ -15,6 +15,7 @@ class EmployeeFactory extends Factory
     public function definition()
     {
         return [
+            //there are 10 companies, so employees can be associated with a random digit for their foreign key
             'company_id' => rand(1, 10),
             'first_name' => $this->faker->firstName,
             'last_name' => $this->faker->lastName,

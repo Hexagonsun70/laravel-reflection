@@ -19,14 +19,18 @@ class CompanyFactory extends Factory
             'company-logo-8.png', 'company-logo-9.png', 'company-logo-10.png'
         ];
 
-        // $pre was created to change the pathing for the img url if necessary.
-        $pre = '/img/';
+        // $path was created to change the pathing for the img url if necessary.
+        $path = '/storage/img/';
+
+        // alternative method to create a path to a random logo which doesn't require an array:
+        // array method chosen due to flexibility of path names.
+        // 'logo' => $path . 'company-logo-' . $this->faker->unique()->randomDigit . '.png',
 
         return [
             'name' => $this->faker->company,
             'email'=> $this->faker->email,
-            // randomDigit will only work for 10 or fewer objects, use randomNumber if companies supersede 10.
-            'logo' => $pre . $logos[$this->faker->unique()->randomDigit],
+            // randomDigit will only work for 10 or fewer objects, use randomNumber(i) if companies supersede 10.
+            'logo' => $path . $logos[$this->faker->unique()->randomDigit],
             'website'=> $this->faker->domainName
         ];
     }
