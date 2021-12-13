@@ -2,11 +2,12 @@
     <section class=" h-auto ">
         <div id="container" class=" bg-gray-800 text-green-400 flex flex-col items-center h-auto p-4 rounded-xl m-8">
             <h1 class="flex text-center text-2xl">All Employees</h1>
-            <div id="table-container border border-white border-dashed    "
+            <div id="table-container border border-white border-dashed"
                  class="pt-4"
             >
 
-            <x-table.table :headers="['Company', 'First Name', 'Last Name', 'Email', 'Phone Number', ['name' => '', 'border' => 'bottom']]">
+            <x-table.table :headers="['Company', 'First Name', 'Last Name', 'Email', 'Phone Number',
+            ['name' => '', 'border' => 'bottom']]">
                 @foreach($employees as $employee)
                     <tr class="pb-2 hover:bg-gray-800">
                         {{-- the company_id is -1 due to the array referring to the JSON and not the table id --}}
@@ -23,19 +24,19 @@
                 @endforeach
             </x-table.table>
 
-                <div class="pt-4">
-                    {{ $employees->links() }}
-                </div>
+            <div class="pt-4">
+                {{ $employees->links() }}
+            </div>
 
-                <div class="flex justify-center ">
-                    <a  href="employee/create" class="pt-8">
-                        <button class="bg-green-600 text-white rounded w-auto
-                        flex items-center justify-center py-2 px-4"
-                        >
-                            Add Employeee
-                        </button>
-                    </a>
-                </div>
+            <div class="flex justify-center ">
+                <a href="employees/create" class="pt-8">
+                    <button class="bg-green-600 text-white rounded w-auto
+                    flex items-center justify-center py-2 px-4"
+                    >
+                        Add Employeee
+                    </button>
+                </a>
+            </div>
 
             </div>
         </div>

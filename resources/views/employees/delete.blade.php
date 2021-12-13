@@ -38,26 +38,26 @@
                            required
                     >
 
-                <label for="password"
-                       class="py-2"
-                >
-                    Password:
+                    <label for="password"
+                           class="py-2"
+                    >
+                        Password:
 
-                </label>
+                    </label>
 
-                <input type="password"
-                       name="password"
-                       id="password"
-                       class="pl-2 bg-gray-500 text-white"
-                       required
-                >
+                    <input type="password"
+                           name="password"
+                           id="password"
+                           class="pl-2 bg-gray-500 text-white"
+                           required
+                    >
 
-                <div class="flex justify-center">
-                    <button class="px-6 py-2 mt-6 text-white bg-green-500 rounded-lg hover:bg-green-600">
-                        Log In
-                    </button>
-                </div>
-            </form>
+                    <div class="flex justify-center">
+                        <button class="px-6 py-2 mt-6 text-white bg-green-500 rounded-lg hover:bg-green-600">
+                            Log In
+                        </button>
+                    </div>
+                </form>
         </div>
     </div>
 </section>
