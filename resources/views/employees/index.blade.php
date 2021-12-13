@@ -1,5 +1,6 @@
 <x-layout>
     <section class=" h-auto ">
+{{--        <x-modal.edit-e />--}}
         <div id="container" class=" bg-gray-800 text-green-400 flex flex-col items-center h-auto p-4 rounded-xl m-8">
             <h1 class="flex text-center text-2xl">All Employees</h1>
             <div id="table-container border border-white border-dashed"
@@ -17,8 +18,17 @@
                         <x-table.td>{{ $employee->email }}</x-table.td>
                         <x-table.td>{{ $employee->phone_number }}</x-table.td>
                         <td class="p-1 px-4 flex">
-                            <a href="edit-employee-{{ $employee->id }}"><x-table.btn-e /></a>
-                            <a href="delete-employee-{{ $employee->id }}"><x-table.btn-d /></a>
+                            <form action="{{ route('employees.show', $employee) }}">
+                                <x-table.btn-s />
+                            </form>
+
+                            <form action="{{ route('employees.edit', $employee) }}">
+                                <x-table.btn-e />
+                            </form>
+
+                            <form action="{{ route('employees.destroy', $employee) }}">
+                                <x-table.btn-d />
+                            </form>
                         </td>
                     </tr>
                 @endforeach

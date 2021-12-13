@@ -4,12 +4,14 @@
             <h1 class="text-green-500 text-4xl text-center pt-6">Add Employee</h1>
 
             @error('email')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="bg-red-500 text-white p-2 flex justify-center items-center rounded mt-6">
+                    {{ $message }}
+                </div>
             @enderror
 
             <div class="py-6 font-bold text-green-500">
 
-                <form method="POST" action="/" class="flex flex-col">
+                <form method="POST" action="/employees" class="flex flex-col">
                     @csrf
                     <label for="company_id"
                            class="p-2 text-yellow-400"
@@ -31,6 +33,7 @@
                         @endforeach
                     </select>
 
+
                     <label for="first_name"
                            class="p-2 text-yellow-400"
                     >
@@ -39,10 +42,11 @@
                     <input type="first_name"
                            name="first_name"
                            id="first_name"
-                           value=" {{ old('first_name') }}"
+                           value="{{ old('first_name') }}"
                            class="p-2 bg-gray-700 text-yellow-400"
-                           required
+
                     >
+
 
                     <label for="last_name"
                            class="p-2 text-yellow-400"
@@ -54,8 +58,9 @@
                            id="last_name"
                            value=" {{ old('last_name') }}"
                            class="p-2 bg-gray-700 text-yellow-400"
-                           required
+
                     >
+
 
                     <label for="email"
                            class="p-2 text-yellow-400"
@@ -67,8 +72,9 @@
                            id="email"
                            value=" {{ old('email') }}"
                            class="p-2 bg-gray-700 text-yellow-400"
-                           required
+
                     >
+
 
                     <label for="phone_number"
                            class="p-2 text-yellow-400"
@@ -80,8 +86,9 @@
                            id="phone_number"
                            value=" {{ old('phone_number') }}"
                            class="p-2 bg-gray-700 text-yellow-400"
-                           required
+
                     >
+
 
                     <div class="flex justify-center">
                         <button class="px-6 py-2 mt-6 text-white bg-green-500 rounded-lg hover:bg-green-600">
