@@ -8,16 +8,22 @@
                 <x-table.table :headers="['First Name', 'Last Name', 'Email', 'Phone Number', ['name' => '', 'border' => 'bottom']]">
                     @foreach($employees as $employee)
                         <tr class="pb-2 hover:bg-gray-800">
-                            {{-- the company_id is -1 due to the array referring to the JSON and not the table id --}}
-                            {{-- $companies[($employees->company_id - 1)]['name']--}}
-
                             <x-table.td>{{ $employee->first_name }}</x-table.td>
                             <x-table.td>{{ $employee->last_name }}</x-table.td>
                             <x-table.td>{{ $employee->email }}</x-table.td>
                             <x-table.td>{{ $employee->phone_number }}</x-table.td>
                             <td class="p-1 px-4 flex">
-                                <a href="edit-employee-{{ $employee->id }}"><x-table.btn-e /></a>
-                                <a href="delete-employee-{{ $employee->id }}"><x-table.btn-d /></a>
+                                <form action="{{ route('companies.employees.show', $employee) }}">
+                                    <x-table.btn-s />
+                                </form>
+
+                                <form action="{{ route('companies.employees.edit', $employee) }}">
+                                    <x-table.btn-e />
+                                </form>
+
+                                <form action="{{ route('companies.employees.destroy', $employee) }}">
+                                    <x-table.btn-d />
+                                </form>
                             </td>
                         </tr>
                     @endforeach

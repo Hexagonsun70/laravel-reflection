@@ -1,11 +1,11 @@
 <x-layout>
     <section>
         <div class="bg-gray-800 mx-auto flex flex-col justify-center align-center px-9 h-auto  w-96 rounded-xl shadow-2xl">
-            <h1 class="text-green-500 text-4xl text-center pt-6">Add Employee</h1>
+            <h1 class="text-green-500 text-4xl text-center pt-6">Add Company</h1>
 
             <div class="py-6 font-bold text-green-500">
 
-                <form method="POST" action="/login" class="flex flex-col">
+                <form method="POST" action="/employees" class="flex flex-col">
                     @csrf
                     <label for="email"
                            class="pb-2"
@@ -14,7 +14,7 @@
 
                     </label>
 
-                    <input type="comany_id"
+                    <input type="text"
                            name="company_id"
                            id="company_id"
                            value=" {{ old('email') }}"

@@ -49,7 +49,7 @@ class EmployeeRequest extends FormRequest
     public function messages()
     {
         return [
-            'company_id.required' => 'A company is required',
+            'company_id.required' => 'A companies is required',
             'first_name.required' => 'A first name is required',
             'last_name.required' => 'A last name is required',
             'email.required' => 'An email is required',

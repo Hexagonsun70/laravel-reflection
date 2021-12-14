@@ -24,7 +24,7 @@ class CompanyFactory extends Factory
 
         // alternative method to create a path to a random logo which doesn't require an array:
         // array method chosen due to flexibility of path names.
-        // 'logo' => $path . 'company-logo-' . $this->faker->unique()->randomDigit . '.png',
+        // 'logo' => $path . 'companies-logo-' . $this->faker->unique()->randomDigit . '.png',
 
         return [
             'name' => $this->faker->company,

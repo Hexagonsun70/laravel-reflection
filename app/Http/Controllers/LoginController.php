@@ -9,9 +9,14 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
+    public function index()
+    {
+        return view('dashboard');
+    }
+
     public function create()
     {
-        return view('home');
+        return view('dashboard');
     }
 
 
@@ -39,7 +44,6 @@ class LoginController extends Controller
 //            ->withInput()
 //            ->WithErrors(['email' => 'Your provided credentials are invalid. Please try again']);
     }
-
 
     public function destroy(Request $request)
     {

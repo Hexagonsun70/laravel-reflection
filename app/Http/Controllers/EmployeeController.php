@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Models\Employee;
 use App\Models\Company;
-use App\Http\Requests;
+use Illuminate\Validation\Rule;
 
 class EmployeeController extends Controller
 {
@@ -50,17 +48,34 @@ class EmployeeController extends Controller
 
     public function update(Employee $employee)
     {
-        ddd($this->validate($employee));
         $attributes = $this->validateEmployee($employee);
 
         $employee->update($attributes);
 
-        return redirect()->route('employees.index')->with('success', 'Employee Updated!');
+        return redirect()->route('employees.show', [
+            'employee' => $employee,
+            'companies' => Company::all()
+        ])->with('success', 'Employee Updated!');
     }
 
     public function destroy(Employee $employee){
         $employee->delete();
-        return redirect('/index')->with('success', 'Employee Deleted!');
+        return redirect()->route('employees.index')->with('success', 'Employee Deleted!');
+    }
+
+    public function validateEmployee(?Employee $employee = null): array
+    {
+        $employee ??= new Employee();
+        return request()->validate([
+            'company_id' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => ['required',
+                'regex:/^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/',
+                Rule::unique('employees', 'email')->ignore($employee)
+            ],
+            'phone_number' => 'required', Rule::unique('employees', 'phone_number')->ignore($employee),
+        ]);
     }
 
 
