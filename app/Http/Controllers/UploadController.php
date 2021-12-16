@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class CompanyEmployeeController extends Controller
+class UploadController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -30,11 +30,27 @@ class CompanyEmployeeController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048|dimensions:min_width=100,min_height=100',
+        ]);
+
+        $imageName = time().'.'.$request->image->extension();
+
+        $request->image->storeAs('img', $imageName);
+
+        if ($request->hasHeader('/companies/create')) {
+            return redirect()->route('/companies/create')
+                ->with('success','You have successfully uploaded an image.')
+                ->with('image', $imageName);
+        }
+
+        return redirect()->route('upload.index')
+            ->with('success','You have successfully uploaded an image.')
+            ->with('image', $imageName);
     }
 
     /**
@@ -45,15 +61,7 @@ class CompanyEmployeeController extends Controller
      */
     public function show($id)
     {
-        //Route::get('companies/{id}/employees', function ($id) {
-//    $employees = Employee::where('company_id', $id)->orderBy('first_name')->get();
-//    $result = Company::select('name')->where('id', $id)->get();
-//    $company = substr($result, 10, -3);
-//    return view('companies-employees', [
-//        'employees' => $employees,
-//        'companies' => $company
-//        ]);
-//});
+        //
     }
 
     /**

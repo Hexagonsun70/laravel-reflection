@@ -12,7 +12,6 @@ class EmployeeController extends Controller
     {
         return view('employees.index', [
             'employees' => Employee::paginate(10),
-            'companies' => Company::all()
         ]);
     }
 
@@ -54,7 +53,6 @@ class EmployeeController extends Controller
 
         return redirect()->route('employees.show', [
             'employee' => $employee,
-            'companies' => Company::all()
         ])->with('success', 'Employee Updated!');
     }
 

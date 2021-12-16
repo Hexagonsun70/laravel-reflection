@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use App\Models\Employee;
+use App\Models\Logo;
 use Illuminate\Validation\Rule;
 
 class CompanyController extends Controller
@@ -11,26 +12,30 @@ class CompanyController extends Controller
     public function index()
     {
         return view('companies.index', [
-            'companies' => Company::paginate(5)
+            'companies' => Company::paginate(5),
         ]);
     }
 
     public function create()
     {
-        return view('company.create', [
-            'companies' => Company::all()
+        return view('companies.create', [
+            'companies' => Company::all(),
+            'logos' => Logo::all()
+//            'image' => request()->file('image')->store('image', 'public')
         ]);
     }
 
     public function store(){
         Company::create($this->validateCompany());
-        return redirect()->route('company.index')->with('success', 'Company added!');
+        return redirect()
+            ->route('company.index')
+            ->with('success', 'Company added!');
     }
 
     public function show(Company $company)
     {
         return view('companies.show', [
-            'company' => Company::find($company->id),
+            'company' => $company
         ]);
     }
 
@@ -38,7 +43,8 @@ class CompanyController extends Controller
     {
         //Route model binding means we don't need to use findorfail() here
         return view('companies.edit', [
-            'company' => Company::find($company->id),
+            'company' => $company,
+            'logos' => Logo::all()
         ]);
     }
 
@@ -54,9 +60,10 @@ class CompanyController extends Controller
     }
 
     public function destroy(Company $company){
+        $company->employees()->delete();
         $company->delete();
         return redirect()->route('companies.index')
-            ->with('success', 'Company Deleted!');
+            ->with('success', $company->name . ' and Associated Employees Deleted!');
     }
 
     public function validateCompany(?Company $company = null): array

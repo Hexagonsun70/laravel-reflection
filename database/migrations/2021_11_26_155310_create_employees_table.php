@@ -15,6 +15,9 @@ class CreateEmployeesTable extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->bigIncrements('id');
+            // Could be $table->foreignId('company_id')->constrained->cascadeOnDelete() but this is not compatible with
+            // all database types, so I figured it was good habit to control deletion through Eloquent model
+            // relationships via each model's associated controller.
             $table->foreignId('company_id');
             $table->string('first_name');
             $table->string('last_name');

@@ -2,11 +2,16 @@
 
 namespace Database\Factories;
 
+
+use App\Models\Company;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class CompanyFactory extends Factory
+class LogoFactory extends Factory
 {
-    private static $id = 0;
+
+//    private static $company_id = 1;
+    private static $logo_index = 0;
+
     /**
      * Define the model's default state.
      *
@@ -28,10 +33,11 @@ class CompanyFactory extends Factory
         // 'logo' => $path . 'companies-logo-' . $this->faker->unique()->randomDigit . '.png',
 
         return [
-            'logo' => $path . $logos[self::$id++],
-            'name' => $this->faker->company,
-            'email'=> $this->faker->email,
-            'website'=> $this->faker->domainName
+            // realised that I didn't actually want the images to be associated with a company, as they could be
+            // assigned dynamically. logos should just act as  a repo for companies to draw from.
+//            'company_id' => self::$company_id++,
+            'file_path' => $path . $logos[(self::$logo_index++)],
         ];
     }
+
 }

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Company;
+use App\Models\Logo;
 use App\Models\Employee;
 
 use Illuminate\Database\Seeder;
@@ -18,14 +19,17 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'Joe Bloggs',
+            'name' => 'Admin',
             'email' => 'admin@admin.com',
             'password' => bcrypt('password')
         ]);
 
         Company::factory(10)->create();
 
+        Logo::factory(10)->create();
+
         Employee::factory(100)->create();
+
 
 //         Company::create([
 //             'name' => 'Netmatters',

@@ -23,7 +23,7 @@
                                 <td class="border-r border-dashed">
                                     <img src="{{ $company->logo }}"
                                                  alt="{{$company->name}} logo"
-                                                 class="h-24 w-24 m-1"
+                                                 class="h-24 w-24 m-1 object-cover"
                                     >
                                 </td>
                                 <td class="p-1 px-4 h-28 flex justify-center items-center">
@@ -35,8 +35,8 @@
                                         <x-table.btn-e />
                                     </form>
 
-                                    <form action="{{ route('companies.destroy', $company) }}">
-                                        <x-table.btn-d />
+                                    <form method="post" action="{{ route('companies.destroy', $company) }}">
+                                        <x-table.btn-d-c />
                                     </form>
                                 </td>
                             </tr>

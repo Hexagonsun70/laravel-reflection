@@ -1,10 +1,12 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\UploadController;
 use App\Http\Controllers\CompanyEmployeeController;
 
 
@@ -28,17 +30,21 @@ Route::get('/', function () {
     }
 });
 
+// login / logout
+Route::get('login', [LoginController::class, 'create']);
+Route::post('login', [LoginController::class, 'store']);
+Route::get('logout', [LoginController::class, 'destroy']);
+
 // Resource routes:
 Route::resources([
 //    'login' => LoginController::class,
     'employees' => EmployeeController::class,
     'companies' => CompanyController::class,
+    'uploads' => UploadController::class,
 //    'companies.employees' => CompanyEmployeeController::class
 ]);
 
-// login / logout
-Route::get('login', [LoginController::class, 'create']);
-Route::post('login', [LoginController::class, 'store']);
-Route::get('logout', [LoginController::class, 'destroy']);
+Route::get('image-upload', [ UploadController::class, 'imageUpload' ])->name('image.upload');
+Route::post('image-upload', [ UploadController::class, 'imageUploadPost' ])->name('image.upload.post');
 
 

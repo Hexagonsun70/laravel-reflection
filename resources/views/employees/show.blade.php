@@ -14,7 +14,7 @@
             <div class="py-6  text-yellow-400 flex flex-col text-xl w-full">
                 <div class="flex flex-col pb-4 ">
                     <span class="text-green-500 font-bold">Company:</span>
-                    <span>{{ucwords($companies[($employee->company_id - 1)]['name'])}}</span>
+                    <span>{{ substr($employee->company()->pluck('name') , 2, -2) }}</span>
                 </div>
                 <div class="flex flex-col pb-4">
                     <span class="text-green-500 font-bold">Email:</span>

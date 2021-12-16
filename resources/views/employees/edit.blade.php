@@ -31,13 +31,11 @@
                 <select name="company_id"
                         id="company_id"
                         class="bg-gray-700 text-yellow-400 p-2"
-                        value="{{ $employee->company_id }}"
                         required
                 >
                     <option value="{{ $employee->company_id }}"
-                        {{ old('company_id') == $employee->company_id ? 'selected' : '' }}
                     >
-                        {{ ucwords($companies[($employee->company_id - 1)]['name']) }}
+                        {{ substr($employee->company()->pluck('name') , 2, -2) }}
                     </option>
                     @foreach ($companies as $company)
                         @if($company->id == $employee->company_id)
@@ -45,7 +43,6 @@
                         @endif
                         <option class="p-2"
                                 value="{{ $company->id }}"
-                            {{ old('company_id') == $company->id ? 'selected' : '' }}
                         >
                             {{ ucwords($company->name) }}
                         </option>

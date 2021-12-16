@@ -21,8 +21,7 @@
                 ['name' => '', 'border' => 'bottom']]">
                     @foreach($employees as $employee)
                         <tr class="pb-2 hover:bg-gray-800">
-                            {{-- the company_id is -1 due to the array referring to the JSON and not the table id --}}
-                            <x-table.td>{{ $companies[($employee->company_id - 1)]['name'] }}</x-table.td>
+                            <x-table.td>{{ substr($employee->company()->pluck('name') , 2, -2) }}</x-table.td>
                             <x-table.td>{{ $employee->first_name }}</x-table.td>
                             <x-table.td>{{ $employee->last_name }}</x-table.td>
                             <x-table.td>{{ $employee->email }}</x-table.td>
