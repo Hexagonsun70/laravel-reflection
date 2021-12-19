@@ -26,10 +26,10 @@ class CompanyController extends Controller
     }
 
     public function store(){
-        Company::create($this->validateCompany());
+        $company = Company::create($this->validateCompany());
         return redirect()
-            ->route('company.index')
-            ->with('success', 'Company added!');
+            ->route('companies.index')
+            ->with('success', $company->name . ' added!');
     }
 
     public function show(Company $company)
@@ -56,7 +56,7 @@ class CompanyController extends Controller
 
         return redirect()->route('companies.show', [
             'company' => $company,
-        ])->with('success', 'Company Updated!');
+        ])->with('success', $company->name . ' Updated!');
     }
 
     public function destroy(Company $company){
@@ -73,13 +73,11 @@ class CompanyController extends Controller
             'name' => 'required',
             'email' => ['required',
                 'regex:/^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/',
-                Rule::unique('employees', 'email')->ignore($company)
+                Rule::unique('companies', 'email')->ignore($company)
             ],
-            'logo' => 'required',
-            'website' => ['required',
-                'regex:/^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/',
-                Rule::unique('employees', 'email')->ignore($company)],
-
+            'logos' => 'required',
+            'website' => 'required',
+            'regex:[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)'
         ]);
     }
 

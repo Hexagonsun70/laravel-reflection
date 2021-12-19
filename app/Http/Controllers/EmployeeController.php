@@ -11,7 +11,7 @@ class EmployeeController extends Controller
     public function index()
     {
         return view('employees.index', [
-            'employees' => Employee::paginate(10),
+            'employees' => Employee::orderBy('company_id')->paginate(10),
         ]);
     }
 
@@ -22,8 +22,8 @@ class EmployeeController extends Controller
         ]);
     }
 
-    public function store(){
-
+    public function store()
+    {
         Employee::create($this->validateEmployee());
         return redirect()->route('employees.index')->with('success', 'Employee added!');
     }
@@ -53,7 +53,7 @@ class EmployeeController extends Controller
 
         return redirect()->route('employees.show', [
             'employee' => $employee,
-        ])->with('success', 'Employee Updated!');
+        ])->with('success', $employee->first_name . ' ' . $employee->last_name . ' Updated!');
     }
 
     public function destroy(Employee $employee){

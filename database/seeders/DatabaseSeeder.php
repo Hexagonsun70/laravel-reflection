@@ -34,21 +34,21 @@ class DatabaseSeeder extends Seeder
 //         Company::create([
 //             'name' => 'Netmatters',
 //             'email' => 'user1@admin.com',
-//             'logo' => 'img/companies-logo-1.png',
+//             'logos' => 'img/companies-logos-1.png',
 //             'website' => 'website-url.com'
 //         ]);
 //
 //        Company::create([
 //            'name' => 'Company 2',
 //            'email' => 'user2@admin.com',
-//            'logo' => 'img/companies-logo-2.png',
+//            'logos' => 'img/companies-logos-2.png',
 //            'website' => 'website-url-two.com'
 //        ]);
 //
 //        Company::create([
 //            'name' => 'Company 3',
 //            'email' => 'user3@admin.com',
-//            'logo' => 'img/companies-logo-3.png',
+//            'logos' => 'img/companies-logos-3.png',
 //            'website' => 'website-url-three.com'
 //        ]);
     }

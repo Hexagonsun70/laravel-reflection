@@ -24,18 +24,14 @@
          x-show="open"
          class="flex flex-col rounded-lg shadow-lg overflow-hidden bg-gray-800 w-4.5/5 h-4.5/5 z-10">
         <div class="p-6 border-b border-dashed">
-            <h2><b class="text-green-500 text-xl">New Logo:</b> <span id="modal1_label" x-text="imgSrc"></span></h2>
+            <h2><b class="text-green-500 text-xl">Logo URL:</b>
+                <span class="text-yellow-400" id="modal1_label" x-text="imgSrc"></span>
+            </h2>
         </div>
         <div class="p-6">
-            <span>Current Logo:</span>
+            <span>Logo:</span>
             <div class="h-full w-full flex justify-center items-center">
-                <img class="w-32 h-32 object-cover rounded" :src="companyImg">
-            </div>
-        </div>
-        <div class="p-6">
-            <span>New Logo:</span>
-            <div class="h-full w-full flex justify-center items-center">
-                <img class="w-32 h-32 object-cover rounded" :src="imgSrc">
+                <img class="w-48 h-48 object-cover rounded" :src="imgSrc">
             </div>
         </div>
     </div>

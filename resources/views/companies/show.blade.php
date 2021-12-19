@@ -32,7 +32,7 @@
                             <button class="bg-green-500 rounded text-white px-4 py-2 m-2">Employees</button>
                         </a>
                     </div>
-                    <img src="{{ $company->logo }}"
+                    <img src="{{ $company->logos }}"
                          alt="{{ $company->name }} logo"
                          class="h-80 w-full  rounded object-cover"
                     >

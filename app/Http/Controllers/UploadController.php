@@ -42,13 +42,13 @@ class UploadController extends Controller
 
         $request->image->storeAs('img', $imageName);
 
-        if ($request->hasHeader('/companies/create')) {
-            return redirect()->route('/companies/create')
-                ->with('success','You have successfully uploaded an image.')
-                ->with('image', $imageName);
-        }
+//        if ($request->hasHeader('/companies/create')) {
+//            return redirect()->route('/companies/create')
+//                ->with('success','You have successfully uploaded an image.')
+//                ->with('image', $imageName);
+//        }
 
-        return redirect()->route('upload.index')
+        return redirect()->back()
             ->with('success','You have successfully uploaded an image.')
             ->with('image', $imageName);
     }

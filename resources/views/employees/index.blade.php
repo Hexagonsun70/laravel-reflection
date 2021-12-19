@@ -48,12 +48,12 @@
                 </div>
 
                 <div class="flex justify-center ">
-                    <a href="employees/create" class="pt-8">
-                        <button class="bg-green-600 text-white rounded w-auto
+                    <a href="/employees/create" class="pt-8">
+                        <div class="bg-green-600 text-white rounded w-auto
                         flex items-center justify-center py-2 px-4"
                         >
-                            Add Employeee
-                        </button>
+                            Add Employee
+                        </div>
                     </a>
                 </div>
 

@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\LogoController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\LoginController;
@@ -37,14 +38,14 @@ Route::get('logout', [LoginController::class, 'destroy']);
 
 // Resource routes:
 Route::resources([
-//    'login' => LoginController::class,
+    'auth' => AuthController::class,
     'employees' => EmployeeController::class,
     'companies' => CompanyController::class,
-    'uploads' => UploadController::class,
-//    'companies.employees' => CompanyEmployeeController::class
+    'logos' => LogoController::class,
 ]);
 
-Route::get('image-upload', [ UploadController::class, 'imageUpload' ])->name('image.upload');
-Route::post('image-upload', [ UploadController::class, 'imageUploadPost' ])->name('image.upload.post');
+
+//Route::get('image-upload', [ UploadController::class, 'imageUpload' ])->name('image.upload');
+//Route::post('image-upload', [ UploadController::class, 'imageUploadPost' ])->name('image.upload.post');
 
 

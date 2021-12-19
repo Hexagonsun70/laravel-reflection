@@ -21,7 +21,7 @@
                                 <x-table.td>{{ $company->email }}</x-table.td>
                                 <x-table.td>{{ $company->website }}</x-table.td>
                                 <td class="border-r border-dashed">
-                                    <img src="{{ $company->logo }}"
+                                    <img src="{{ $company->logos }}"
                                                  alt="{{$company->name}} logo"
                                                  class="h-24 w-24 m-1 object-cover"
                                     >
