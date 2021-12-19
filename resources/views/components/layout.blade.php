@@ -14,11 +14,11 @@
     <title>Admin Panel Reflection</title>
 </head>
 
-<body class=" m-0 w-screen">
+<body class=" m-0 w-screen grow-div">
 
 <x-header></x-header>
 
-<main class="flex justify-center items-center min-h-screen bg-gray-500 m-0">
+<main class="flex justify-center items-center bg-gray-500 m-0 grow w-screen">
 
 @guest
 

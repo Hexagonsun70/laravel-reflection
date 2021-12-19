@@ -1,4 +1,6 @@
-<div class="bg-gray-800 mx-auto flex flex-col justify-center align-center px-9 h-auto  w-96 rounded-xl shadow-2xl">
+<section class="login flex items-center">
+  <div class="bg-gray-800 mx-auto flex flex-col justify-center align-center px-9
+            h-auto  w-96 rounded-xl shadow-2xl h-auto">
 
     <h1 class="text-green-500 text-4xl text-center pt-6">Admin Login</h1>
 
@@ -42,4 +44,5 @@
             </div>
         </form>
     </div>
-</div>
+  </div>
+</section>

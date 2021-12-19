@@ -1,5 +1,5 @@
 <x-layout>
-    <div>
+    <section class="m-8">
         <div class="flex items-center">
                 <span class="text-gray-800 text-xl p-2"><i class="fas fa-angle-double-left"></i>
                     <a href="/">Dashboard</a> /
@@ -124,5 +124,5 @@
                     Upload image
                 </a>
         </div>
-    </div>
+    </section>
 </x-layout>

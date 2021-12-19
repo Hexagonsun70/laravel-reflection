@@ -1,6 +1,6 @@
 <x-layout>
-    <section class=" h-auto ">
-        <div class="m-8">
+    <section class=" grow-div ">
+        <div class="m-8 h-auto">
             <a href="/">
                 <div class="flex items-center">
                     <span class="text-gray-800 text-xl p-2">
@@ -57,6 +57,9 @@
 
                 </div>
             </div>
+        </div>
+        <div class="grow-child">
+
         </div>
     </section>
 </x-layout>

@@ -24,11 +24,12 @@ use App\Http\Controllers\CompanyEmployeeController;
 
 // home page logic
 Route::get('/', function () {
-    if (session()->has('LoggedUser')) {
-        return view('dashboard');
-    } else {
-        return redirect('login');
-    }
+    return view('dashboard');
+//    if (session()->has('LoggedUser')) {
+//        return view('dashboard');
+//    } else {
+//        return redirect('login');
+//    }
 });
 
 // login / logout
@@ -38,14 +39,13 @@ Route::get('logout', [LoginController::class, 'destroy']);
 
 // Resource routes:
 Route::resources([
-    'auth' => AuthController::class,
+//    'auth' => AuthController::class,
     'employees' => EmployeeController::class,
     'companies' => CompanyController::class,
     'logos' => LogoController::class,
+    'companyEmployees' => CompanyEmployeeController::class,
 ]);
 
 
 //Route::get('image-upload', [ UploadController::class, 'imageUpload' ])->name('image.upload');
 //Route::post('image-upload', [ UploadController::class, 'imageUploadPost' ])->name('image.upload.post');
-
-

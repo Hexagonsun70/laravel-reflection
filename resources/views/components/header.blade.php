@@ -1,4 +1,4 @@
-<header class="p-6 bg-gray-800 w-screen h-24 flex justify-between mr-6 items-center text-green-500">
+<header class="p-6 bg-gray-800 w-screen flex justify-between items-center text-green-500">
 
     <h1 class="text-4xl">
         <b>S</b><b class="text-yellow-500">E</b><b class="text-red-600">O</b> <b>PANEL</b>

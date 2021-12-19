@@ -1,5 +1,5 @@
 <x-layout>
-    <section class="flex flex-wrap justify-center">
+    <section class="flex flex-wrap justify-center login">
         <div class="m-8">
             <div class="flex items-center">
                 <span class="text-gray-800 text-xl p-2"><i class="fas fa-angle-double-left"></i>
