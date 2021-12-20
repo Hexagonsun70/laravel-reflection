@@ -58,7 +58,8 @@ class EmployeeController extends Controller
 
     public function destroy(Employee $employee){
         $employee->delete();
-        return redirect()->route('employees.index')->with('success', 'Employee Deleted!');
+        return redirect()->route('employees.index')
+            ->with('success', $employee->first_name . ' ' . $employee->last_name . ' Deleted!');
     }
 
     public function validateEmployee(?Employee $employee = null): array

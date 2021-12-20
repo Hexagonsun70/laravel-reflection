@@ -8,10 +8,6 @@ header {
     height: 100px;
 }
 
-// main {
-//     min-height: calc(100% - 100px);
-// }
-
 .login {
   height: calc(100vh - 100px);
   align-items: center;
@@ -27,5 +23,4 @@ header {
 .grow {
   background-color: rgba(107, 114, 128, var(--tw-bg-opacity));
   flex-grow: 1;
-
 }

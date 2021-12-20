@@ -8,7 +8,9 @@
 
         <div class="flex">
             <a href="/logout" class=" flex items-center">
-                <button class="px-4 py-2 text-1xl bg-green-500 text-white rounded-xl">Log Out</button>
+                <button class="px-4 py-2 text-1xl bg-green-600 hover:bg-green-700 text-white rounded-xl">
+                    Log Out
+                </button>
             </a>
             <a href="/">
                 <h2 class="text-2xl p-2 mx-2 hidden sm:flex">

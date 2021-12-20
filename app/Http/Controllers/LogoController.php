@@ -10,11 +10,12 @@ class LogoController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
         return view('logos.index', [
+            //sort by desc 'id' so that the most recent logo is displayed at the top when store returns to index
             'logos' => Logo::all()->sortByDesc('id')
         ]);
     }
@@ -41,21 +42,13 @@ class LogoController extends Controller
             'file_path' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048|dimensions:min_width=100,min_height=100'
         ]);
 
-//        Logo::create($request);
-
-        $imageName = time().'.'.$request->file_path->extension();
+        $imageName = $request->file_path->getClientOriginalName();
 
         $filePath = '/storage/img/' . $imageName;
 
         Logo::create(['file_path' => $filePath]);
 
         $request->file_path->storeAs('public/img', $imageName);
-
-//        if ($request->hasHeader('/companies/create')) {
-//            return redirect()->route('/companies/create')
-//                ->with('success','You have successfully uploaded an image.')
-//                ->with('image', $imageName);
-//        }
 
         return redirect()->route('logos.index')
             ->with('success','You have successfully uploaded '. $imageName)

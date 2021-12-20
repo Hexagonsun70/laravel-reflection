@@ -4,6 +4,12 @@
 
     <h1 class="text-green-500 text-4xl text-center pt-6">Admin Login</h1>
 
+      @error('email')
+      <div class="bg-red-500 text-white p-2 flex justify-center items-center rounded mt-6 text-center">
+          {{ $message }}
+      </div>
+      @enderror
+
     <div class="py-6 font-bold text-green-500">
 
         <form method="POST" action="/login" class="flex flex-col">

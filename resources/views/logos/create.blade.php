@@ -32,7 +32,8 @@
                            class="p-4"
                     >
                     <button type="submit"
-                            class="bg-indigo-600 text-white w-full text-center p-2 corner rounded-xl"
+                            class="bg-indigo-600 hover:bg-indigo-700 text-white w-full text-center p-2 corner
+                                   rounded-xl"
                     >
                         Upload image
                     </button>

@@ -10,7 +10,7 @@
             <div class="bg-gray-800 mx-auto flex flex-col justify-center align-center px-9 h-auto  w-96 rounded-xl shadow-2xl  p-6">
 
                     <a href="/logos/create"
-                            class="bg-indigo-600 text-white w-full text-center p-2 corner rounded-xl"
+                       class="bg-indigo-600 hover:bg-indigo-700 text-white w-full text-center p-2 corner rounded-xl"
                     >
                         Upload image
                     </a>

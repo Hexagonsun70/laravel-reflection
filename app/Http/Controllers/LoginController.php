@@ -14,12 +14,6 @@ class LoginController extends Controller
         return view('dashboard');
     }
 
-    public function create()
-    {
-        return view('dashboard');
-    }
-
-
     public function store(Request $request)
     {
         //validate the request
@@ -36,8 +30,7 @@ class LoginController extends Controller
         } else {
         //auth failed, flash error message
         throw ValidationException::withMessages([
-           'email' => 'Your provided credentials are invalid. Please try again',
-            'password' => 'Your provided credentials are invalid. Please try again'
+            'email' => 'Your provided credentials are invalid. Please try again'
         ]);
         }
 //        return back()

@@ -97,7 +97,7 @@
 
 
                         <div class="flex justify-center">
-                            <button class="px-6 py-2 mt-6 text-white bg-green-500 rounded-lg hover:bg-green-600">
+                            <button class="px-6 py-2 mt-6 text-white bg-green-600 rounded-lg hover:bg-green-700">
                                 Add Employee
                             </button>
                         </div>

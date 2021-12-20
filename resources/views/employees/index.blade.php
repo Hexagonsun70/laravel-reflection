@@ -54,7 +54,7 @@
 
                 <div class="flex justify-center ">
                     <a href="/employees/create" class="pt-8">
-                        <div class="bg-green-600 text-white rounded w-auto
+                        <div class="bg-green-600 hover:bg-green-700 text-white rounded w-auto
                         flex items-center justify-center py-2 px-4"
                         >
                             Add Employee

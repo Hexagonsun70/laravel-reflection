@@ -53,7 +53,7 @@
 
                             <div class=" w-full pt-2"
                                  x-data="{ open: false,
-                                   imgSrc: '',
+                                   imgSrc: '{{ $logos[0]->file_path }}',
                                  }"
                             >
                                 <label for="logo"
@@ -104,7 +104,9 @@
                 </div>
             </div>
             <div class="bg-gray-800 mx-auto flex flex-col justify-center align-center px-9 h-auto  w-96 rounded-xl shadow-2xl m-8 p-6">
-                <a class="bg-indigo-600 text-white w-full text-center p-2 corner rounded-xl font-bold tracking-wider" href="/logos">
+                <a class="bg-indigo-600 hover:bg-indigo-700 text-white w-full text-center p-2 corner rounded-xl
+                          font-bold tracking-wider"
+                   href="/logos">
                     Upload Company Logo
                 </a>
             </div>

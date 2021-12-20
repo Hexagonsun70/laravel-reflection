@@ -5,7 +5,10 @@
             <div id="table-container border border-white border-dashed    "
                  class="pt-4"
             >
-                <x-table.table :headers="['First Name', 'Last Name', 'Email', 'Phone Number', ['name' => '', 'border' => 'bottom']]">
+                <x-table.table
+                    :headers="['First Name', 'Last Name', 'Email', 'Phone Number',
+                    ['name' => '', 'border' => 'bottom']]"
+                >
                     @foreach($employees as $employee)
                         <tr class="pb-2 hover:bg-gray-800">
                             <x-table.td>{{ $employee->first_name }}</x-table.td>
