@@ -28,7 +28,7 @@
                     </label>
                     <input type="file"
                            name="file_path"
-                           accept="image/jpeg, image/png"
+                           accept="image/*"
                            class="p-4"
                     >
                     <button type="submit"
