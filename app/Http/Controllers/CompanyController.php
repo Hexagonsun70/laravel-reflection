@@ -72,12 +72,12 @@ class CompanyController extends Controller
         return request()->validate([
             'name' => 'required',
             'email' => ['required',
-                'regex:/^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/',
+                'regex:/(?i)^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/',
                 Rule::unique('companies', 'email')->ignore($company)
             ],
             'logos' => 'required',
             'website' => 'required',
-                'regex:[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)',
+                'regex:/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/',
                 Rule::unique('companies', 'website')->ignore($company)
         ]);
     }

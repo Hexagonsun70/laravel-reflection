@@ -62,13 +62,13 @@
                          }"
                     >
                         <label for="company_id"
-                               class="p-2 text-yellow-400"
+                               class="m-2 text-yellow-400"
                         >
                             Assign New Logo:
                         </label>
                         <select name="logos"
                                 id="logos"
-                                class="bg-gray-700 p-2 w-full"
+                                class="bg-gray-700 p-2 my-2 w-full"
                                 x-model="imgSrc"
                                 required
                         >

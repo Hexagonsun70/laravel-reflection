@@ -14,7 +14,9 @@
                 <div id="table-container border border-white border-dashed    "
                      class="pt-4"
                 >
-                    <x-table.table :headers="['Name', 'email', 'website', 'logo', ['name' => '', 'border' => 'bottom']]">
+                    <x-table.table :headers="['Name', 'Email', 'Website', 'Logo',
+                                             ['name' => '', 'border' => 'bottom']]"
+                    >
                         @foreach($companies as $company)
                             <tr class="pb-2 hover:bg-gray-800">
                                 <x-table.td>{{ $company->name }}</x-table.td>
