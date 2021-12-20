@@ -23,15 +23,19 @@
                         Contact Details:
                     </h2>
                     <span class="pb-4 text-yellow-400 text-xl"> {{ $company->email }}</span>
-{{--                    <div class="w-full flex justify-center pb-4">--}}
-{{--                        <a href="{{ route('company.employees.index') }}">--}}
-{{--                            <button class="bg-green-500 rounded text-white px-4 py-2 m-2">Employees</button>--}}
-{{--                        </a>--}}
-{{--                    </div>--}}
                     <img src="{{ $company->logos }}"
                          alt="{{ $company->name }} logo"
-                         class="h-80 w-full  rounded object-cover"
+                         class="h-80 w-full  rounded object-cover pt-4"
                     >
+                    <div class="flex justify-center pt-6 px-4 w-full">
+                        <form action="{{ route('companies.edit', $company) }}">
+                            <x-table.btn-e />
+                        </form>
+
+                        <form method="post" action="{{ route('companies.destroy', $company) }}">
+                            <x-table.btn-d-c />
+                        </form>
+                    </div>
 
                 </div>
             </div>

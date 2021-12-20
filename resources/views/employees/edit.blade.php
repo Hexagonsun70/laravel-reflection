@@ -33,7 +33,7 @@
                         class="bg-gray-700 text-yellow-400 p-2"
                         required
                 >
-                    <option value="{{ $employee->company_id }}"
+                    <option value="{{ old('company_id') ?? $employee->company_id }}"
                     >
                         {{ substr($employee->company()->pluck('name') , 2, -2) }}
                     </option>
@@ -58,7 +58,7 @@
                 <input type="text"
                        name="first_name"
                        id="first_name"
-                       value="{{ $employee->first_name }}"
+                       value="{{ old('first_name') ?? $employee->first_name }}"
                        class="p-2 bg-gray-700 text-white"
                        required
                 >
@@ -72,7 +72,7 @@
                 <input type="text"
                        name="last_name"
                        id="last_name"
-                       value="{{ $employee->last_name }}"
+                       value=" {{old('last_name') ?? $employee->last_name }}"
                        class="p-2 bg-gray-700 text-white"
                        required
                 >
@@ -86,9 +86,8 @@
                 <input type="email"
                        name="email"
                        id="email"
-                       value="{{ $employee->email }}"
+                       value="{{ old('email') ?? $employee->email }}"
                        class="p-2 bg-gray-700 text-white"
-                       required
                 >
 
                 <label for="phone_number"
@@ -100,7 +99,7 @@
                 <input type="tel"
                        name="phone_number"
                        id="phone_number"
-                       value="{{ $employee->phone_number }}"
+                       value="{{ old('phone_number') ?? $employee->phone_number }}"
                        class="p-2 bg-gray-700 text-white"
                        required
                 >

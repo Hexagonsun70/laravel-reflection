@@ -77,7 +77,8 @@ class CompanyController extends Controller
             ],
             'logos' => 'required',
             'website' => 'required',
-            'regex:[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)'
+                'regex:[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)',
+                Rule::unique('companies', 'website')->ignore($company)
         ]);
     }
 

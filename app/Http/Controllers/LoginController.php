@@ -30,7 +30,7 @@ class LoginController extends Controller
         } else {
         //auth failed, flash error message
         throw ValidationException::withMessages([
-            'email' => 'Your provided credentials are invalid. Please try again'
+            'email' => 'Your provided credentials are invalid. Please try again',
         ]);
         }
 //        return back()

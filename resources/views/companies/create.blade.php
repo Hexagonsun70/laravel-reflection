@@ -9,16 +9,15 @@
             <div class="bg-gray-800 mx-auto flex flex-col justify-center align-center px-9 h-auto  w-96 rounded-xl shadow-2xl text-green-500">
                 <h1 class="text-4xl text-center pt-6">Add Company</h1>
 
-                @error('email')
+                @if ($errors->any())
                     <div class="bg-red-500 text-white p-2 flex justify-center items-center rounded mt-6">
-                        {{ $message }}
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
                     </div>
-                @enderror
-                @error('website')
-                <div class="bg-red-500 text-white p-2 flex justify-center items-center rounded mt-6">
-                    {{ $message }}
-                </div>
-                @enderror
+                @endif
 
                 <div class="py-6 font-bold">
 

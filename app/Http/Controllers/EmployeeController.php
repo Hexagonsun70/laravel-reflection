@@ -73,7 +73,10 @@ class EmployeeController extends Controller
                 'regex:/^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/',
                 Rule::unique('employees', 'email')->ignore($employee)
             ],
-            'phone_number' => 'required', Rule::unique('employees', 'phone_number')->ignore($employee),
+            'phone_number' => 'required',
+            // Decided against regex in the phone number due to high variance of potential formats + I saw a suggestion
+            // on stack overflow that a text note for contact may be preferable than a number in some circumstances
+            Rule::unique('employees', 'phone_number')->ignore($employee)
         ]);
     }
 

@@ -11,21 +11,15 @@
                 Edit Company <br> <span class="text-yellow-400">{{ $company->name }}</span>
             </h1>
 
-            @error('email')
-            <div class="bg-red-500 text-white p-2 flex justify-center items-center rounded mt-6">
-                {{ $message }}
-            </div>
-            @enderror
-            @error('logos')
-            <div class="bg-red-500 text-white p-2 flex justify-center items-center rounded mt-6">
-                {{ $message }}
-            </div>
-            @enderror
-            @error('website')
-            <div class="bg-red-500 text-white p-2 flex justify-center items-center rounded mt-6">
-                {{ $message }}
-            </div>
-            @enderror
+            @if ($errors->any())
+                <div class="bg-red-500 text-white p-2 flex justify-center items-center rounded mt-6">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
             <div class="py-6 font-bold text-yellow-400">
                 <form method="POST"
@@ -42,7 +36,7 @@
                     <input type="text"
                            name="name"
                            id="name"
-                           value="{{ $company->name }}"
+                           value="{{ old('name') ?? $company->name }}"
                            class="p-2 bg-gray-700 text-white"
                            required
                     >
@@ -56,7 +50,7 @@
                     <input type="email"
                            name="email"
                            id="email"
-                           value="{{ $company->email }}"
+                           value="{{ old('email') ?? $company->email }}"
                            class="p-2 bg-gray-700 text-white"
                            required
                     >
@@ -78,7 +72,7 @@
                                 x-model="imgSrc"
                                 required
                         >
-                            <option value="{{ $company->logos }}"
+                            <option value="{{ old('logos') ?? $company->logos }}"
                                     class="text-green-400"
                             >
                                 {{ $company->logos }}
@@ -107,7 +101,7 @@
                     <input type="text"
                            name="website"
                            id="website"
-                           value="{{ $company->website }}"
+                           value="{{ old('website') ?? $company->website }}"
                            class="p-2 bg-gray-700 text-white w-full"
                            required
                     >

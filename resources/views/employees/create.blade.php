@@ -9,11 +9,21 @@
             <div class="bg-gray-800 mx-auto flex flex-col justify-center align-center px-9 h-auto  w-96 rounded-xl shadow-2xl">
                 <h1 class="text-green-500 text-4xl text-center pt-6">Add Employee</h1>
 
-                @error('email')
-                <div class="bg-red-500 text-white p-2 flex justify-center items-center rounded mt-6">
-                    {{ $message }}
-                </div>
-                @enderror
+
+                @if ($errors->any())
+                    <div class="bg-red-500 text-white p-2 flex justify-center items-center rounded mt-6">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+{{--                @error('email')--}}
+{{--                <div class="bg-red-500 text-white p-2 flex justify-center items-center rounded mt-6">--}}
+{{--                    {{ $message }}--}}
+{{--                </div>--}}
+{{--                @enderror--}}
 
                 <div class="py-6 font-bold text-green-500">
 
@@ -50,7 +60,7 @@
                                id="first_name"
                                value="{{ old('first_name') }}"
                                class="p-2 bg-gray-700 text-yellow-400"
-
+                               required
                         >
 
 
@@ -64,7 +74,7 @@
                                id="last_name"
                                value=" {{ old('last_name') }}"
                                class="p-2 bg-gray-700 text-yellow-400"
-
+                               required
                         >
 
 
@@ -78,7 +88,7 @@
                                id="email"
                                value=" {{ old('email') }}"
                                class="p-2 bg-gray-700 text-yellow-400"
-
+                               required
                         >
 
 
@@ -92,7 +102,7 @@
                                id="phone_number"
                                value=" {{ old('phone_number') }}"
                                class="p-2 bg-gray-700 text-yellow-400"
-
+                               required
                         >
 
 
