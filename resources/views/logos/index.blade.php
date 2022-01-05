@@ -19,7 +19,7 @@
                 <div class="w-64 bg-gray-800 text-yellow-400 h-auto rounded-xl m-4">
                     <div class="border-b border-white border-dashed">
                         <h1 class="p-2">
-                            <span class="text-green-400 font-bold">Logo URL:</span> {{ substr($logo->file_path, 13) }}
+                            <span class="text-green-400 font-bold">Logo File Name:</span> {{ substr($logo->file_path, 13) }}
                         </h1>
                     </div>
                     <div class="flex justify-center pt-4">
