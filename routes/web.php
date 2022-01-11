@@ -1,6 +1,5 @@
 <?php
 
-
 use App\Http\Controllers\LogoController;
 use Illuminate\Support\Facades\Route;
 
@@ -8,7 +7,6 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CompanyEmployeeController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +40,6 @@ Route::resources([
     'employees' => EmployeeController::class,
     'companies' => CompanyController::class,
     'logos' => LogoController::class,
-
 ]);
 
 //Route::resource('companies.employees', CompanyEmployeeController::class)->shallow();

@@ -1,27 +1,27 @@
 <header class="p-6 bg-gray-800 w-screen flex justify-between items-center text-green-500">
 
-    @auth
+        @auth
         <div class="flex content-center">
-            <a href="/">
-                <h1 class="text-4xl">
-                    <b>CR</b><b class="text-yellow-500">U</b><b class="text-red-600">D</b>
-                    <b class="text-yellow-400">PANEL</b>
-                </h1>
-            </a>
-            <div class="flex content-center h-full">
-                <a href="/companies">
-                    <div class="bg-green-600 hover:bg-green-700 ml-2 text-white rounded w-auto
+        <a href="/">
+            <h1 class="text-4xl">
+                <b>CR</b><b class="text-yellow-500">U</b><b class="text-red-600">D</b>
+                <b class="text-yellow-400">PANEL</b>
+            </h1>
+        </a>
+        <div class="flex content-center h-full">
+            <a href="/companies">
+                <div class="bg-green-600 hover:bg-green-700 ml-2 text-white rounded w-auto
                 flex items-center justify-center py-2 px-4 font-bold tracking-wide">
-                        Companies
-                    </div>
-                </a>
-                <a href="/employees">
-                    <div class="bg-green-600 hover:bg-green-700 ml-2 text-white rounded w-auto
+                    Companies
+                </div>
+            </a>
+            <a href="/employees">
+                <div class="bg-green-600 hover:bg-green-700 ml-2 text-white rounded w-auto
                 flex items-center justify-center py-2 px-4 font-bold tracking-wide tracking-wider">
-                        Employees
-                    </div>
-                </a>
-            </div>
+                    Employees
+                </div>
+            </a>
+        </div>
         </div>
 
         <div class="flex">

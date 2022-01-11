@@ -17,9 +17,9 @@ class EmployeeController extends Controller
 
     public function create()
     {
-        return view('employees.create', [
-            'companies' => Company::all()
-        ]);
+            return view('employees.create', [
+                'companies' => Company::all()
+            ]);
     }
 
     public function store()

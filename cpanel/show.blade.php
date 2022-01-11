@@ -57,8 +57,11 @@
             <div id="table-container border border-white border-dashed"
                  class="pt-4"
             >
-                <x-table.table :headers="['First Name', 'Last Name', 'Email', 'Phone Number',
-                ['name' => '', 'border' => 'bottom']]">
+                <x-table.table :headers="[['name' => 'First Name', 'classes' => 'border-r border-dashed'],
+                                          ['name' => 'Last Name', 'classes' => 'border-r border-dashed'],
+                                          ['name' => 'Email', 'classes' => 'border-r border-dashed'],
+                                          ['name' => 'Phone Number', 'classes' => 'border-r border-dashed'],
+                                          ['name' => '', 'classes' => 'border-b border-dashed no-border-r']]">
                     @foreach($employees as $employee)
                         <tr class="pb-2 hover:bg-gray-800">
                             <x-table.td>{{ $employee->first_name }}</x-table.td>

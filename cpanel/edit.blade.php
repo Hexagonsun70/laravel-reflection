@@ -33,8 +33,7 @@
                         class="bg-gray-700 text-yellow-400 p-2"
                         required
                 >
-                    <option class="text-green-400"
-                            value="{{ substr($employee->company()->pluck('id'), 1, -1) }}"
+                    <option value="{{ substr($employee->company()->pluck('id'), 1, -1) }}"
                             selected >
                         {{ substr($employee->company()->pluck('name') , 2, -2) }}
                     </option>

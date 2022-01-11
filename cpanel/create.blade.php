@@ -34,21 +34,13 @@
                         >
                             Company:
                         </label>
-                        <select id="company_id"
-                                name="company_id"
-                                class="bg-gray-700 text-yellow-400 p-2"
-                                required
-                        >
-                            <option value=""
-                                    disabled
-                                    selected >
-                                Please Select Company
-                            </option>
+                        <select id="company_id" class="bg-gray-700 text-yellow-400 p-2"  name="company_id" required>
+                            <option value="" disabled selected >Please Select Company</option>
                             @foreach(\App\Models\Company::all(['id', 'name']) as $company)
                                 <option {{Route::getCurrentRequest()->query('company') == $company->id ? 'selected': '' }}
-                                        value="{{$company->id}}">
-                                    {{$company->name}}
-                                </option>
+                                        value="{{
+                        $company->id
+                        }}">{{$company->name}}</option>
                             @endforeach
                         </select>
 {{--                        <select name="company_id"--}}
