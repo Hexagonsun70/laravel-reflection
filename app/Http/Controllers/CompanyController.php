@@ -6,14 +6,14 @@ use App\Models\Company;
 use App\Models\Employee;
 use App\Models\Logo;
 use Illuminate\Validation\Rule;
+use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
     public function index()
     {
-        return view('companies.index', [
-            'companies' => Company::paginate(5),
-        ]);
+        $companies = Company::sortable()->paginate(10);
+        return view('companies.index', compact('companies'));
     }
 
     public function create()

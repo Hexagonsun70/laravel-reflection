@@ -19,29 +19,19 @@ use App\Http\Controllers\CompanyEmployeeController;
 |
 */
 
-// home page logic
+// Home Page Logic:
 Route::get('/', function () {
     return view('dashboard');
-//    if (session()->has('LoggedUser')) {
-//        return view('dashboard');
-//    } else {
-//        return redirect('login');
-//    }
 });
 
-// login / logout
+// Login / Logout:
 Route::get('login', [LoginController::class, 'index']);
 Route::post('login', [LoginController::class, 'store']);
 Route::get('logout', [LoginController::class, 'destroy']);
 
 // Resource routes:
 Route::resources([
-//    'auth' => AuthController::class,
     'employees' => EmployeeController::class,
     'companies' => CompanyController::class,
     'logos' => LogoController::class,
 ]);
-
-//Route::resource('companies.employees', CompanyEmployeeController::class)->shallow();
-
-

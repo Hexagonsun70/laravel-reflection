@@ -50,9 +50,11 @@ class LogoController extends Controller
 
         $request->file_path->storeAs('public/img', $imageName);
 
-        return redirect()->route('logos.index')
-            ->with('success','You have successfully uploaded '. $imageName)
+        return back()
+            ->withInput()
+            ->with('success', 'You have successfully uploaded ' . $imageName)
             ->with('image', $imageName);
+
     }
 
     /**

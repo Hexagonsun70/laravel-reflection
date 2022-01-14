@@ -14,7 +14,7 @@
                 <div id="table-container border border-white border-dashed    "
                      class="pt-4"
                 >
-                    <x-table.table :headers="['Name', 'Email', 'Website', 'Logo',
+                    <x-table.table :headers="['Email', 'Website', 'Logo',
                                              ['name' => '', 'border' => 'bottom']]"
                     >
                         @foreach($companies as $company)
@@ -43,6 +43,7 @@
                                 </td>
                             </tr>
                         @endforeach
+                        {!! $companies->appends(\Request::except('page'))->render() !!}
                     </x-table.table>
 
                     <div class="pt-4">

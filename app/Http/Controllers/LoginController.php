@@ -26,6 +26,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             // 'session regenerate' in place to stop session fixation attacks.
             request()->session()->regenerate();
+//            return redirect()->intended('dashboard')->with('success', 'Welcome Back!');
             return redirect('/')->with('success', 'Welcome Back!');
         } else {
         //auth failed, flash error message

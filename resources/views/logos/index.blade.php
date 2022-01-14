@@ -3,8 +3,7 @@
         <div class="m-8">
             <div class="flex items-center">
                 <span class="text-gray-800 text-xl p-2"><i class="fas fa-angle-double-left"></i>
-                    <a href="/">Dashboard</a> /
-                    <a href="{{ route('companies.index') }}">Companies</a>
+                    <a href="{{ url()->previous() }}">Back</a>
                 </span>
             </div>
             <div class="bg-gray-800 mx-auto flex flex-col justify-center align-center px-9 h-auto  w-96 rounded-xl shadow-2xl  p-6">

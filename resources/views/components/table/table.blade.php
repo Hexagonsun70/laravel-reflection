@@ -1,6 +1,7 @@
 <table class="bg-gray-700 rounded-xl">
     <thead>
         <tr class=" text-yellow-400 p-4 tracking-wider">
+            <th class="p-4 border-b border-dashed">@sortablelink('name')</th>
             @foreach($headers as $header)
                 <th class="p-4 {{ $header['classes'] }} border-b border-dashed">
                     {{ $header['name'] }}

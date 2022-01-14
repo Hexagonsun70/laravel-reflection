@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.12",
+        "kyslik/column-sortable": "^6.4",
         "laracasts/generators": "^2.0",
         "laracasts/testdummy": "^2.5",
         "laravel/framework": "^8.65",
