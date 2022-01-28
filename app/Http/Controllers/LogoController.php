@@ -30,6 +30,13 @@ class LogoController extends Controller
         return view('logos.create');
     }
 
+    public function messages()
+    {
+        return [
+            'file_path' => 'A title is required',
+            'body.required' => 'A message is required',
+        ];
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -38,6 +45,7 @@ class LogoController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'file_path' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048|dimensions:min_width=100,min_height=100'
         ]);

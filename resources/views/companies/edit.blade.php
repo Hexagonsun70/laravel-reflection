@@ -12,19 +12,23 @@
             </h1>
 
             @if ($errors->any())
-                <div class="bg-red-500 text-white p-2 flex justify-center items-center rounded mt-6">
-                    <ul>
-                        @foreach ($errors->all() as $error)
+                @foreach ($errors->all() as $error)
+                    @if(preg_match('/(file)/', $error))
+                        @continue
+                    @endif
+                    <div class="bg-red-500 text-white p-2 flex justify-center items-center rounded mt-6">
+                        <ul>
                             <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
+                        </ul>
+                    </div>
+                @endforeach
             @endif
 
             <div class="py-6 font-bold text-yellow-400">
                 <form method="POST"
                       action="{{ route('companies.update', $company) }}"
                       class="flex flex-col"
+                      novalidate
                 >
                     @csrf
                     @method('PATCH')
@@ -75,7 +79,7 @@
                             <option value="{{ old('logos') ?? $company->logos }}"
                                     class="text-green-400"
                             >
-                                {{ $company->logos }}
+                                {{ substr($company->logos, 13, -4) }}
                             </option>
                             @foreach ($logos as $logo)
                                 @if($company->logos == $logo->file_path)
@@ -84,7 +88,7 @@
                                 <option class="p-2 text-yellow-400"
                                         value="{{ $logo->file_path }}"
                                 >
-                                    {{ $logo->file_path }}
+                                    {{ substr($logo->file_path, 13, -4) }}
                                 </option>
                             @endforeach
                         </select>

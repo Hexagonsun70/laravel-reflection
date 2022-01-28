@@ -23,12 +23,14 @@
     <div @click.stop=""
          x-show="open"
          class="flex flex-col rounded-lg shadow-lg overflow-hidden bg-gray-800 w-4.5/5 h-4.5/5 z-10">
+        <div x-if="imgSrc = ''"></div>
         <div class="p-6 border-b border-dashed">
-            <h2><b class="text-green-500 text-xl">Logo URL:</b>
-                <span class="text-yellow-400" id="modal1_label" x-text="imgSrc"></span>
+            <h2>
+                <b class="text-green-500 text-xl mb-1">Logo Name:</b>
+                <span class="text-yellow-400" id="modal1_label" x-text="imgSrc.substring(13)"></span>
             </h2>
         </div>
-        <div class="p-6">
+        <div class="p-6 mb-1">
             <span>Logo:</span>
             <div class="h-full w-full flex justify-center items-center">
                 <img class="w-48 h-48 object-cover rounded" :src="imgSrc">

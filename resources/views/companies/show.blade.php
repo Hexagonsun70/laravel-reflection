@@ -50,22 +50,50 @@
                 </div>
             </div>
         </div>
-        <div id="container" class=" bg-gray-800 text-green-400 flex flex-col items-center h-auto p-4 rounded-xl mt-4">
-            <h1 class="flex text-center text-2xl">Employees of&nbsp;
-                <div class="text-yellow-400">{{ $company->name }}</div>
-            </h1>
+
+        <div id="container" class=" bg-gray-800 text-green-400 flex flex-col items-center h-auto p-4 rounded-xl mt-4 container-width">
+            <div class="flex items-start w-full mr-4">
+                <h1 class="flex text-2xl flex-grow justify-center">Employees of&nbsp;
+                    <span class="text-yellow-400">{{ $company->name }}</span>
+                </h1>
+                <div class="">
+                    <form action="" method="get" class="flex">
+                        <div>
+                            <x-input id="search"
+                                     class="w-64 bg-gray-700 p-2 rounded-lg
+                                             placeholder-green-500 placeholder-opacity-90"
+                                     type="text"
+                                     name="search"
+                                     :value="request('search')"
+                                     placeholder="Search..."
+                            />
+                        </div>
+                        <button class="text-white rounded-lg bg-indigo-600 ml-2 w-10">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
             <div id="table-container border border-white border-dashed"
                  class="pt-4"
             >
-                <x-table.table :headers="['First Name', 'Last Name', 'Email', 'Phone Number',
-                ['name' => '', 'border' => 'bottom']]">
+                @if($employees[0])
+                <x-table.table-ce>
                     @foreach($employees as $employee)
                         <tr class="pb-2 hover:bg-gray-800">
                             <x-table.td>{{ $employee->first_name }}</x-table.td>
                             <x-table.td>{{ $employee->last_name }}</x-table.td>
-                            <x-table.td>{{ $employee->email }}</x-table.td>
-                            <x-table.td>{{ $employee->phone_number }}</x-table.td>
-                            <td class="p-1 px-4 flex">
+                            <x-table.td>
+                                <a href="mailto:{{$employee->email}}" class="underline">
+                                    {{ $employee->email }}
+                                </a>
+                            </x-table.td>
+                            <x-table.td>
+                                <a href="tel:{{$employee->phone_number}}" class="underline">
+                                    {{ $employee->phone_number }}
+                                </a>
+                            </x-table.td>
+                            <td class="p-1 px-4 flex justify-center">
                                 <form action="{{ route('employees.show', $employee) }}">
                                     <x-table.btn-s />
                                 </form>
@@ -74,16 +102,20 @@
                                     <x-table.btn-e />
                                 </form>
 
-                                <form method="post" action="{{ route('employees.destroy', $employee) }}">
-                                    <x-table.btn-d />
-                                </form>
+                                <div x-data="{open: false}">
+                                    <x-modal.e-del :employee="$employee"/>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
-                </x-table.table>
+                </x-table.table-ce>
+                @else
+                    <p class="text-yellow-400 text-2xl uppercase">No employees found</p>
+                @endif
                 <div class="pt-4">
-                    {{ $employees->links() }}
+                    {!! $employees->appends(\Request::except('page'))->render() !!}
                 </div>
+
                 <div class="flex justify-center">
                 <a href="{{ route('employees.create', ['company' => $company]) }}"
                    class=" bg-green-600 hover:bg-green-700 text-white rounded justify-center flex
@@ -104,5 +136,8 @@
 
             </div>
         </div>
+
+
+
     </section>
 </x-layout>

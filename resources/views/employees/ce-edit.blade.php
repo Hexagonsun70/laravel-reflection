@@ -13,25 +13,21 @@
             Edit Employee <br> <span class="text-yellow-400">{{$employee->first_name}} {{ $employee->last_name }}</span>
         </h1>
 
-            @if ($errors->any())
-                @foreach ($errors->all() as $error)
-                    <div class="bg-red-500 text-white p-2 flex justify-center items-center rounded mt-6">
-                        <ul>
-                            <li>{{ $error }}</li>
-                        </ul>
-                    </div>
-                @endforeach
-            @endif
+        @error('email')
+        <div class="bg-red-500 text-white p-2 flex justify-center items-center rounded mt-6">
+            {{ $message }}
+        </div>
+        @enderror
 
         <div class="py-6 font-bold text-yellow-400">
 
             <form method="POST"
-                  action="{{ route('employees.update', $employee) }}"
+                  action="{{ action('EmployeeController.updateCompanyEmployee', ['employee' => $employee, 'company' => $company]) }}"
                   class="flex flex-col">
                 @csrf
                 @method('PATCH')
                 <label for="company_id"
-                       class="m-2 text-yellow-400"
+                       class="p-2 text-yellow-400"
                 >
                     Company:
                 </label>
@@ -59,7 +55,7 @@
                 </select>
 
                 <label for="first_name"
-                       class="m-2"
+                       class="pb-2"
                 >
                      First Name:
                 </label>
@@ -73,7 +69,7 @@
                 >
 
                 <label for="last_name"
-                       class="m-2"
+                       class="pb-2"
                 >
                     Last Name:
                 </label>
@@ -87,7 +83,7 @@
                 >
 
                 <label for="email"
-                       class="m-2"
+                       class="pb-2"
                 >
                     Email:
                 </label>
@@ -100,7 +96,7 @@
                 >
 
                 <label for="phone_number"
-                       class="m-2"
+                       class="pb-2"
                 >
                     Phone Number:
                 </label>

@@ -11,18 +11,21 @@
                 <h1 class="text-4xl text-center pt-6">Add Company</h1>
 
                 @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        @if(preg_match('/(file)/', $error))
+                            @continue
+                        @endif
                     <div class="bg-red-500 text-white p-2 flex justify-center items-center rounded mt-6">
                         <ul>
-                            @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
-                            @endforeach
                         </ul>
                     </div>
+                    @endforeach
                 @endif
 
                 <div class="py-6 font-bold">
 
-                        <form method="post" action="{{ route('companies.index') }}" class="flex flex-col">
+                        <form method="post" action="{{ route('companies.index') }}" class="flex flex-col" novalidate>
                             @csrf
                             @method('POST')
                             <label for="name"
@@ -49,11 +52,9 @@
                                    class="bg-gray-700 p-2 w-full"
                                    required
                             >
-
-
                             <div class=" w-full pt-2"
                                  x-data="{ open: false,
-                                   imgSrc: '{{ $logos[0]->file_path }}',
+                                   imgSrc: '',
                                  }"
                             >
                                 <label for="logo"
@@ -63,18 +64,24 @@
                                 </label>
                                 <select type="text"
                                         name="logos"
-                                        class="bg-gray-700 p-2 w-full text-yellow-400"
+                                        class="bg-gray-700 p-2 w-full text-yellow-400 mt-2"
                                         x-model="imgSrc"
                                         required
                                 >
+                                    <option disabled
+                                            selected
+                                            value
+                                    >
+                                        Please Upload and Select a Logo
+                                    </option>
                                     @foreach ($logos as $logo)
                                         <option class="p-2 text-yellow-400"
                                                 value="{{ $logo->file_path }}"
+                                                selected=""
                                         >
-                                            {{ $logo->file_path }}
+                                            {{ substr($logo->file_path, 13, -4) }}
                                         </option>
                                     @endforeach
-
                                 </select>
                                 <div class="flex justify-center w-full p-4">
                                     <x-modal.preview-c />
@@ -105,6 +112,15 @@
             </div>
         </section>
         <section>
+            @if ($errors->has('file'))
+                <div class="bg-red-500 text-white p-2 flex justify-center items-center rounded mt-6">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div>
                 <div class="ml-6 flex items-center">
                     <span class="text-gray-800 text-xl p-2">
@@ -145,5 +161,8 @@
                 </div>
             </div>
         </section>
+        <div class="bg-gray-800 my-dropzone">
+
+        </div>
     </div>
 </x-layout>

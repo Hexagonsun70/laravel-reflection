@@ -11,7 +11,12 @@ class EmployeeController extends Controller
     public function index()
     {
         return view('employees.index', [
-            'employees' => Employee::orderBy('company_id')->paginate(10),
+            'employees' => Employee::sortable()
+            ->with('company')
+            ->orderBy('first_name')
+            ->orderBy('last_name')
+            ->filter(request(['search']))
+            ->paginate(10)
         ]);
     }
 
@@ -56,6 +61,23 @@ class EmployeeController extends Controller
         ])->with('success', $employee->first_name . ' ' . $employee->last_name . ' Updated!');
     }
 
+    public function updateCompanyEmployee(Employee $employee, $company)
+    {
+        $attributes = $this->validateEmployee($employee);
+
+        $employee->update($attributes);
+
+        return redirect()->route()('/companies/' . $company->id, [
+            'company' => $company,
+            'employees' => Employee::where('company_id', $company->id)
+                ->filter(request(['search']))
+                ->sortable()
+                ->orderBy('first_name')
+                ->orderBy('last_name')
+                ->paginate(10),
+        ])->with('success', $employee->first_name . ' ' . $employee->last_name . ' Updated!');
+    }
+
     public function destroy(Employee $employee){
         $employee->delete();
         return redirect()->route('employees.index')
@@ -73,10 +95,8 @@ class EmployeeController extends Controller
                 'regex:/^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/',
                 Rule::unique('employees', 'email')->ignore($employee)
             ],
-            'phone_number' => 'required',
-            // Decided against regex in the phone number due to high variance of potential formats + I saw a suggestion
-            // on stack overflow that a text note for contact may be preferable than a number in some circumstances
-            Rule::unique('employees', 'phone_number')->ignore($employee)
+            'phone_number' => ['required', 'regex:/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/',
+            Rule::unique('employees', 'phone_number')->ignore($employee)]
         ]);
     }
 
