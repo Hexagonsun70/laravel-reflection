@@ -114,10 +114,11 @@
                        class="p-2 bg-gray-700 text-white"
                        required
                 >
-
-                    <button type="submit" class="px-6 py-2 mt-6 text-white bg-yellow-600 rounded-lg hover:bg-red-700">
+                <div class="flex justify-center">
+                    <button type="submit" class="px-6 py-2 mt-6 text-white bg-yellow-600 rounded-lg hover:bg-yellow-700 w-44">
                         Submit Edit
                     </button>
+                </div>
             </form>
         </div>
     </section>

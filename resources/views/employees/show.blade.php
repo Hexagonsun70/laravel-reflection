@@ -14,7 +14,11 @@
             <div class="py-6  text-yellow-400 flex flex-col text-xl w-full">
                 <div class="flex flex-col pb-4 ">
                     <span class="text-green-500 font-bold">Company:</span>
-                    <span>{{ substr($employee->company()->pluck('name') , 2, -2) }}</span>
+                    <span class="underline">
+                        <a href="{{ '/companies/' . $employee->company_id }}">
+                            {{ substr($employee->company()->pluck('name') , 2, -2) }}
+                        </a>
+                    </span>
                 </div>
                 <div class="flex flex-col pb-4">
                     <span class="text-green-500 font-bold">Email:</span>

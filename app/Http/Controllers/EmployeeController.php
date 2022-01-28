@@ -30,7 +30,7 @@ class EmployeeController extends Controller
     public function store()
     {
         Employee::create($this->validateEmployee());
-        return redirect()->route('employees.index')->with('success', 'Employee added!');
+        return redirect()->route('employees.show')->with('success', 'Employee added!');
     }
 
     public function show(Employee $employee)

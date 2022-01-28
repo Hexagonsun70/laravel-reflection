@@ -6,8 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\CompanyController;
-use App\Http\Controllers\CompanyEmployeeController;
-
+use Illuminate\Support\Facades\Artisan;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,3 +34,15 @@ Route::resources([
     'companies' => CompanyController::class,
     'logos' => LogoController::class,
 ]);
+
+Route::get('storage-link', function () {
+    Artisan::call('storage:link');
+
+    dd("Storage is linked!");
+});
+
+Route::get('db-reset', function () {
+    Artisan::call('migrate:fresh --seed');
+
+    dd("Fresh migration and database seeded!");
+});
