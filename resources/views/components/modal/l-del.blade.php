@@ -28,13 +28,13 @@
             <p class="text-lg pt-1">
                 Confirm whether you wish to delete
                 <b class="text-yellow-400">
-                    {{ $employee->first_name }} {{ $employee->last_name }}
+                    {{ substr($logo->file_path, 13)  }}
                 </b>
             </p>
         </div>
         <div class="flex justify-around my-2">
             <form method="post"
-                  action="{{ route('employees.destroy', $employee) }}">
+                  action="{{ route('logos.destroy', $logo) }}">
                 @csrf
                 @method('DELETE')
                 <button type="submit"
@@ -55,4 +55,3 @@
         </div>
     </div>
 </div>
-

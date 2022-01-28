@@ -6,7 +6,8 @@
     <i class="fas fa-trash-alt text-white"></i>
 </button>
 
-<div role="dialog"
+<div style="display:none"
+     role="dialog"
      aria-labelledby="modal1_label"
      aria-modal="true"
      tabindex="0"

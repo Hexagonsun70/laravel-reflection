@@ -65,6 +65,15 @@
                                    companyImg: '{{ $company->logos }}',
                          }"
                     >
+                        <div class="p-6">
+                                <span class="text-green-500">
+                                    Current Logo: <br>
+                                    <p class="text-yellow-400" x-text="companyImg.substring(13)"></p>
+                                </span>
+                            <div class="h-full w-full flex justify-center items-center mt-2">
+                                <img class="w-32 h-32 object-cover rounded" :src="companyImg">
+                            </div>
+                        </div>
                         <label for="company_id"
                                class="m-2 text-yellow-400"
                         >
@@ -76,6 +85,7 @@
                                 x-model="imgSrc"
                                 required
                         >
+
                             <option value="{{ old('logos') ?? $company->logos }}"
                                     class="text-green-400"
                             >
@@ -118,13 +128,13 @@
             </div>
         </div>
         <div>
-            <div class="flex items-center">
-                <span class="text-gray-800 text-xl p-2">
-                    <i class="fas fa-angle-double-right"></i>
-                    <a href="{{ route('logos.index') }}">Logos</a>
-                </span>
-            </div>
-            <div class="bg-gray-800 mx-auto flex flex-col justify-center align-center px-9 h-auto  w-96 rounded-xl shadow-2xl p-6">
+{{--            <div class="flex items-center">--}}
+{{--                <span class="text-gray-800 text-xl p-2">--}}
+{{--                    <i class="fas fa-angle-double-right"></i>--}}
+{{--                    <a href="{{ route('logos.index') }}">Logos</a>--}}
+{{--                </span>--}}
+{{--            </div>--}}
+            <div class="bg-gray-800 mt-4 mx-auto flex flex-col justify-center align-center px-9 h-auto  w-96 rounded-xl shadow-2xl p-6">
                 <form class="text-yellow-400"
                       method="post"
                       action="{{ route('logos.store') }}"

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Logo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class LogoController extends Controller
 {
@@ -103,10 +104,19 @@ class LogoController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Logo  $logo
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Logo $logo)
     {
-        //
+        if(preg_match('~company-logo-~' , $logo->file_path) == 0){
+        unlink(substr($logo->file_path, 1));
+//        Storage::disk('public')->delete($logo->file_path);
+        $logo->delete();
+        return back()
+            ->with('success', substr($logo->file_path, 13) . ' has been deleted!');
+        } else {
+            return back()
+                ->with('failure', 'This logo is too precious, it cannot be deleted!');
+        }
     }
 }

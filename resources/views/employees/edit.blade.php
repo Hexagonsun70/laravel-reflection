@@ -27,7 +27,9 @@
 
             <form method="POST"
                   action="{{ route('employees.update', $employee) }}"
-                  class="flex flex-col">
+                  class="flex flex-col"
+                  novalidate
+            >
                 @csrf
                 @method('PATCH')
                 <label for="company_id"
