@@ -81,7 +81,7 @@ class CompanyController extends Controller
         $company ??= new Company();
         return request()->validate([
             'name' => 'required',
-            'email' => ['required', 'regex:/(?i)^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/',
+            'email' => ['required', 'regex:/(?i)^([A-z\d\.-]+)@([A-z\d-]+)\.([A-z]{2,8})(\.[A-z]{2,8})?$/',
                 Rule::unique('companies', 'email')->ignore($company)],
             'logos' => 'required',
             'website' => ['required',

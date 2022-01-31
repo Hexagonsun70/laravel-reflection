@@ -27,7 +27,7 @@
 
                 <div class="py-6 font-bold text-green-500">
 
-                    <form method="POST" action="/employees" class="flex flex-col">
+                    <form method="POST" action="{{ route('employees.store') }}" class="flex flex-col" novalidate>
                         @csrf
                         <label for="company_id"
                                class="p-2 text-yellow-400"

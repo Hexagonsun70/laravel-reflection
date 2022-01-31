@@ -29,8 +29,10 @@ class EmployeeController extends Controller
 
     public function store()
     {
-        Employee::create($this->validateEmployee());
-        return redirect()->route('employees.show')->with('success', 'Employee added!');
+        $employee = Employee::create($this->validateEmployee());
+        return redirect()
+            ->route('employees.show', $employee)
+            ->with('success', 'Employee ' . $employee->first_name . ' ' . $employee->last_name .  ' created!');
     }
 
     public function show(Employee $employee)
@@ -92,7 +94,7 @@ class EmployeeController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => ['required',
-                'regex:/^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/',
+                'regex:/^([A-z\d\.-]+)@([A-z\d-]+)\.([A-z]{2,8})(\.[A-z]{2,8})?$/',
                 Rule::unique('employees', 'email')->ignore($employee)
             ],
             'phone_number' => ['required', 'regex:/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/',
