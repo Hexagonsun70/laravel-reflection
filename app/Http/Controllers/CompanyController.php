@@ -80,11 +80,11 @@ class CompanyController extends Controller
     {
         $company ??= new Company();
         return request()->validate([
-            'name' => 'required',
-            'email' => ['required', 'regex:/(?i)^([A-z\d\.-]+)@([A-z\d-]+)\.([A-z]{2,8})(\.[A-z]{2,8})?$/',
+            'name' => 'required|max:255',
+            'email' => ['required', 'max:255', 'regex:/(?i)^([A-z\d\.-]+)@([A-z\d-]+)\.([A-z]{2,8})(\.[A-z]{2,8})?$/',
                 Rule::unique('companies', 'email')->ignore($company)],
             'logos' => 'required',
-            'website' => ['required',
+            'website' => ['required', 'max:255',
                 'regex:/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&=]*)/',
                 Rule::unique('companies', 'website')->ignore($company)]
         ]);

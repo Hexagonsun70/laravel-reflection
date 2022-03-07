@@ -20,11 +20,19 @@
                             <h2 class="font-bold tracking-wider text-green-400  text-xl">
                                 Website:
                             </h2>
-                            <span class="pb-4 text-yellow-400 text-xl">{{ $company->website }}</span>
+                            <span class="pb-4 text-yellow-400 text-xl underline">
+                                <a href="https://{{ $company->website }}" target="_blank">
+                                    {{ $company->website }}
+                                </a>
+                            </span>
                             <h2 class="font-bold tracking-wider text-green-400 text-xl">
                                 Contact Details:
                             </h2>
-                            <span class="pb-4 text-yellow-400 text-xl"> {{ $company->email }}</span>
+                            <span class="pb-4 text-yellow-400 text-xl underline">
+                                <a href="mailto:{{ $company->email }}">
+                                    {{ $company->email }}
+                                </a>
+                            </span>
                             <h2 class="font-bold tracking-wider text-green-400 text-xl">
                                 Number of Employees:
                             </h2>

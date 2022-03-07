@@ -91,9 +91,9 @@ class EmployeeController extends Controller
         $employee ??= new Employee();
         return request()->validate([
             'company_id' => 'required',
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => ['required',
+            'first_name' => 'required|max:255',
+            'last_name' => 'required|max:255',
+            'email' => ['required', 'max:255',
                 'regex:/^([A-z\d\.-]+)@([A-z\d-]+)\.([A-z]{2,8})(\.[A-z]{2,8})?$/',
                 Rule::unique('employees', 'email')->ignore($employee)
             ],

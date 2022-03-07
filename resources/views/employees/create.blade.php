@@ -11,13 +11,13 @@
 
 
                 @if ($errors->any())
-                    <div class="bg-red-500 text-white p-2 flex justify-center items-center rounded mt-6">
-                        <ul>
-                            @foreach ($errors->all() as $error)
+                    @foreach ($errors->all() as $error)
+                        <div class="bg-red-500 text-white p-2 flex justify-center items-center rounded mt-6">
+                            <ul>
                                 <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
+                            </ul>
+                        </div>
+                    @endforeach
                 @endif
 {{--                @error('email')--}}
 {{--                <div class="bg-red-500 text-white p-2 flex justify-center items-center rounded mt-6">--}}
@@ -37,6 +37,7 @@
                         <select id="company_id"
                                 name="company_id"
                                 class="bg-gray-700 text-yellow-400 p-2"
+                                value="{{ old('company_id') }}"
                                 required
                         >
                             <option value=""

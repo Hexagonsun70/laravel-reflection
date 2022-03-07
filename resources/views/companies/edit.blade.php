@@ -128,12 +128,12 @@
             </div>
         </div>
         <div>
-{{--            <div class="flex items-center">--}}
-{{--                <span class="text-gray-800 text-xl p-2">--}}
-{{--                    <i class="fas fa-angle-double-right"></i>--}}
-{{--                    <a href="{{ route('logos.index') }}">Logos</a>--}}
-{{--                </span>--}}
-{{--            </div>--}}
+            <div class="flex items-center">
+                        <span class="text-gray-800 text-xl p-2">
+                            <i class="fas fa-angle-double-right"></i>
+                            <a href="{{ route('logos.index') }}">Logos</a>
+                        </span>
+            </div>
             <div class="bg-gray-800 mt-4 mx-auto flex flex-col justify-center align-center px-9 h-auto  w-96 rounded-xl shadow-2xl p-6">
                 <form class="text-yellow-400"
                       method="post"

@@ -13,7 +13,7 @@
 
             <div class="py-6  text-yellow-400 flex flex-col text-xl w-full">
                 <div class="flex flex-col pb-4 ">
-                    <span class="text-green-500 font-bold">Company:</span>
+                    <span class="text-green-500 font-bold">Company Details Page:</span>
                     <span class="underline">
                         <a href="{{ '/companies/' . $employee->company_id }}">
                             {{ substr($employee->company()->pluck('name') , 2, -2) }}
@@ -22,11 +22,20 @@
                 </div>
                 <div class="flex flex-col pb-4">
                     <span class="text-green-500 font-bold">Email:</span>
-                    <span>{{ $employee->email }}</span>
+                    <span class="underline">
+                        <a href="mailto:{{ $employee->email }}">
+                            {{ $employee->email }}
+                        </a>
+                    </span>
                 </div>
                 <div class="flex flex-col">
                     <span class="text-green-500 font-bold">Phone Number:</span>
-                    <span>{{ $employee->phone_number }}</span>
+
+                    <span class="underline">
+                        <a href="tel:{{ $employee->phone_number }}">
+                            {{ $employee->phone_number }}
+                        </a>
+                    </span>
                 </div>
                 <div class="flex justify-center pt-6 px-4 w-full">
                     <form action="{{ route('employees.edit', $employee) }}">

@@ -20,15 +20,15 @@
 
 <main class="flex justify-center items-center bg-gray-500 m-0 grow w-screen">
 
-@guest
+    @guest
 
-    <x-login />
+        <x-login />
 
-@else
+    @else
 
-{{ $slot }}
+        {{ $slot }}
 
-@endguest
+    @endguest
 
 </main>
 
