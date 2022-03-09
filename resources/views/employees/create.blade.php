@@ -1,6 +1,6 @@
 <x-layout>
     <section>
-        <div>
+        <div class="mt-6">
             <a href="{{ route('employees.index') }}">
                 <div class="flex items-center">
                     <span class="text-gray-800 text-xl p-2"><i class="fas fa-angle-double-left"></i> Back to Employees</span>
@@ -34,38 +34,8 @@
                         >
                             Company:
                         </label>
-                        <select id="company_id"
-                                name="company_id"
-                                class="bg-gray-700 text-yellow-400 p-2"
-                                value="{{ old('company_id') }}"
-                                required
-                        >
-                            <option value=""
-                                    disabled
-                                    selected >
-                                Please Select Company
-                            </option>
-                            @foreach(\App\Models\Company::all(['id', 'name'])->sortBy('name') as $company)
-                                <option {{Route::getCurrentRequest()->query('company') == $company->id ? 'selected': '' }}
-                                        value="{{$company->id}}">
-                                    {{$company->name}}
-                                </option>
-                            @endforeach
-                        </select>
-{{--                        <select name="company_id"--}}
-{{--                                id="company_id"--}}
-{{--                                class="bg-gray-700 text-yellow-400 p-2"--}}
-{{--                                required--}}
-{{--                        >--}}
-{{--                            @foreach ($companies as $company)--}}
-{{--                                <option class="p-2"--}}
-{{--                                        value="{{ $company->id }}"--}}
-{{--                                        {{ old('company_id') == $company->id ? 'selected' : '' }}--}}
-{{--                                >--}}
-{{--                                    {{ ucwords($company->name) }}--}}
-{{--                                </option>--}}
-{{--                            @endforeach--}}
-{{--                        </select>--}}
+                        <x-dropdown.employee-create :companies="$companies" />
+
                         <label for="first_name"
                                class="p-2 text-yellow-400"
                         >

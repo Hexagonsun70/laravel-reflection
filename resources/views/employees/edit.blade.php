@@ -37,28 +37,8 @@
                 >
                     Company:
                 </label>
-                <select id="company_id"
-                        name="company_id"
-                        class="bg-gray-700 text-yellow-400 p-2"
-                        required
-                >
-                    <option class="text-green-400"
-                            value="{{ substr($employee->company()->pluck('id'), 1, -1) }}"
-                            selected >
-                        {{ substr($employee->company()->pluck('name') , 2, -2) }}
-                    </option>
 
-                    @foreach(\App\Models\Company::all(['id', 'name']) as $company)
-                        @if($company->name == substr($employee->company()->pluck('name') , 2, -2))
-                            @continue
-                        @endif
-                        <option {{Route::getCurrentRequest()->query('company') == $company->id ? 'selected': '' }}
-                                value="{{$company->id}}">
-                            {{$company->name}}
-                        </option>
-                    @endforeach
-
-                </select>
+                <x-dropdown.employee-edit :companies="$companies" :employee="$employee" />
 
                 <label for="first_name"
                        class="m-2"

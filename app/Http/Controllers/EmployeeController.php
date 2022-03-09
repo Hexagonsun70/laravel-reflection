@@ -22,8 +22,9 @@ class EmployeeController extends Controller
 
     public function create()
     {
+            $employee = null;
             return view('employees.create', [
-                'companies' => Company::all()
+                'companies' => Company::all(),
             ]);
     }
 
