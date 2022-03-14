@@ -11,7 +11,11 @@
             </a>
             <div id="container" class="bg-gray-800 text-green-400 flex flex-col items-center h-auto p-4 rounded-xl container-c">
                 <div class="flex items-start w-full mr-4">
-                    <h1 class="flex text-center text-2xl justify-center flex-grow">All Companies</h1>
+                    <h1 class="flex text-center text-2xl justify-center flex-grow">
+                        <a href="{{ route('companies.index') }}">
+                            All Companies
+                        </a>
+                    </h1>
                     <div class="">
                         <form action="" method="get" class="flex">
                             <div>
@@ -36,7 +40,11 @@
                     <x-table.table-c id="myTable">
                         @foreach($companies as $company)
                             <tr class="pb-2 hover:bg-gray-800">
-                                <x-table.td>{{ $company->name }}</x-table.td>
+                                <x-table.td>
+                                    <a href="{{ route('companies.show', $company) }}">
+                                        {{ $company->name }}
+                                    </a>
+                                </x-table.td>
                                 <x-table.td>
                                     <a href="mailto:{{$company->email}}" class="underline">{{ $company->email }}</a>
                                 </x-table.td>

@@ -13,7 +13,11 @@
 
             <div id="container" class=" bg-gray-800 text-green-400 flex flex-col items-center h-auto p-4 rounded-xl container-width">
                 <div class="flex items-start w-full mr-4">
-                    <h1 class="flex text-center text-2xl justify-center flex-grow">All Employees</h1>
+                    <h1 class="flex text-center text-2xl justify-center flex-grow">
+                        <a href="{{route('employees.index') }}">
+                            All Employees
+                        </a>
+                    </h1>
                     <div class="">
                         <form action="" method="get" class="flex">
                             <div>
